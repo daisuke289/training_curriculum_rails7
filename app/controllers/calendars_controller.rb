@@ -2,7 +2,7 @@ class CalendarsController < ApplicationController
 
   # １週間のカレンダーと予定が表示されるページ
   def index
-    getWeek
+    get_week
     @plan = Plan.new
   end
 
@@ -24,6 +24,7 @@ class CalendarsController < ApplicationController
     params.require(:plan).permit(:date, :plan)
   end
 
+
   def getWeek
     wdays = ['(日)','(月)','(火)','(水)','(木)','(金)','(土)'] # 曜日配列
   
@@ -38,7 +39,7 @@ class CalendarsController < ApplicationController
       plans.each do |plan|
         today_plans.push(plan.plan) if plan.date == @todays_date + x
       end
-  
+ 
       # 曜日を計算し、days ハッシュに追加
       days = {
         month: (@todays_date + x).month,          # 月
