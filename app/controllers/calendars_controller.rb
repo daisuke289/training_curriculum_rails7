@@ -35,7 +35,7 @@ class CalendarsController < ApplicationController
       plans.each do |plan|
         today_plans.push(plan.plan) if plan.date == @todays_date + x
       end
-  
+ 
       # 曜日を計算し、days ハッシュに追加
       days = {
         month: (@todays_date + x).month,          # 月
